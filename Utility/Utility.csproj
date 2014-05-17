@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\CoreEnvironment.cs" />
+    <Compile Include="Configuration\ICoreEnvironment.cs" />
     <Compile Include="Configuration\XElementAppConfigSectionHandler.cs" />
     <Compile Include="Extensions\AttributeExtensions.cs" />
     <Compile Include="Extensions\ComposablePartCatalogExtensions.cs" />
