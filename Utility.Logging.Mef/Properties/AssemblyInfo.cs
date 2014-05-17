@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Utility.Logging.Mef")]
-[assembly: AssemblyDescription("PRISM ILoggerFacade implemention for the logging classes in the Utility project.")]
+[assembly: AssemblyDescription("PRISM ILoggerFacade implementation for the logging classes in the Utility project.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Utility.Logging.Mef")]

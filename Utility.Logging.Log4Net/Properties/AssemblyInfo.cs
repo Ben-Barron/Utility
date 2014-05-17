@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Utility.Logging.Log4Net")]
-[assembly: AssemblyDescription("Log4Net implemention for the logging classes in the Utility project.")]
+[assembly: AssemblyDescription("Log4Net implementation for the logging classes in the Utility project.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Utility.Logging.Log4Net")]
