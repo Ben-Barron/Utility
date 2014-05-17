@@ -6,8 +6,9 @@ A set of extension, helper & utility classes written for .NET 4.5.1. (Most class
 Consists of the following projects:
 
 - Utility
-- Utility.Reactive
 - Utility.Logging.Log4Net
+- Utility.Logging.Mef
+- Utility.Reactive
 
 Written in C# on Microsoft Visual Studio Express 2013 for Windows Desktop. You will also need NuGet package manager.
 
@@ -34,19 +35,26 @@ Base set of utility classes.
 
 **Dependencies:** Only uses libraries part of the .NET runtime.
 
-Project: Utility.Reactive
--------------------------
-
-Extensions, helper & utility classes that use Reactive Extensions.
-
-**Dependencies:** Reactive Extensions.
-
 Project: Utility.Logging.Log4Net
 ------------------------
 
 Log4Net implementation for the logging classes in the Utility project.
 
 **Dependencies:** Log4Net; Utility project.
+
+Project: Utility.Logging.Mef
+------------------------
+
+PRISM ILoggerFacade implementation for the logging classes in the Utility project.
+
+**Dependencies:** Prism.Composition; Utility project.
+
+Project: Utility.Reactive
+-------------------------
+
+Extensions, helper & utility classes that use Reactive Extensions.
+
+**Dependencies:** Reactive Extensions.
 
 Licence
 -------
