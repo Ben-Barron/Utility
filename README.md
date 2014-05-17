@@ -41,10 +41,10 @@ Extensions, helper & utility classes that use Reactive Extensions.
 
 **Dependencies:** Reactive Extensions.
 
-Project: Utility.Log4Net
+Project: Utility.Logging.Log4Net
 ------------------------
 
-Log4Net implemention for the logging classes in the Utility project.
+Log4Net implementation for the logging classes in the Utility project.
 
 **Dependencies:** Log4Net; Utility project.
 
