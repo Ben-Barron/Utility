@@ -8,6 +8,7 @@ Consists of the following projects:
 - Utility
 - Utility.Logging.Log4Net
 - Utility.Logging.Mef
+- Utility.Messaging
 - Utility.Reactive
 
 Written in C# on Microsoft Visual Studio Express 2013 for Windows Desktop. You will also need NuGet package manager.
@@ -48,6 +49,13 @@ Project: Utility.Logging.Mef
 PRISM ILoggerFacade implementation for the logging classes in the Utility project.
 
 **Dependencies:** Prism.Composition; Utility project.
+
+Project: Utility.Messaging
+------------------------
+
+Messaging service and classes.
+
+**Dependencies:** Reactive Extensions; Utility project; Utility.Reactive project.
 
 Project: Utility.Reactive
 -------------------------
