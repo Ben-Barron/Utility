@@ -4,7 +4,7 @@ namespace Utility.Extensions
 {
     public static class IDisposableExtensions
     {
-        public static void SafeDispose(this IDisposable disposable)
+        public static void DisposeIfNotNull(this IDisposable disposable)
         {
             if (disposable != null)
             {
