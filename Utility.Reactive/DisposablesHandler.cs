@@ -14,9 +14,25 @@ namespace Utility.Reactive
 
         #region "IDisposable implementation"
 
+        private volatile bool _isDisposed = false;
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed)
+            {
+                if (disposing)
+                {
+                    _disposables.Dispose();
+                }
+
+                _isDisposed = true;
+            }
         }
 
         #endregion

@@ -3,7 +3,7 @@ using System.Reactive.Disposables;
 
 namespace Utility.Reactive
 {
-    public class DisposableGroup : IDisposable, IDisposableGroup
+    public sealed class DisposableGroup : IDisposable, IDisposableGroup
     {
         private readonly CompositeDisposable _disposables = new CompositeDisposable();
 
@@ -17,13 +17,11 @@ namespace Utility.Reactive
             _disposables.Remove(disposable);
         }
 
-        #region "IDisposable implementation"
-
+        // Don't need full pattern as its a sealed class and can safely call dispose on a 
+        // CompositeDisposable from any thread mulitple times and it will only dispose once.
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _disposables.Dispose();
         }
-
-        #endregion
     }
 }
