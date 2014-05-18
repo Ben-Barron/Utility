@@ -66,10 +66,7 @@
     <Compile Include="Schedulers\ISchedulerService.cs" />
     <Compile Include="Schedulers\SchedulerService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="IO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
