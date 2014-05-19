@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.IO;
+using System.Runtime.Caching;
 using System.Xml.Serialization;
 
 namespace Utility.Extensions
 {
     public static class SerializerExtensions
     {
-        // TODO: this should be changed to a MemoryCache where the items expire
-        private static ConcurrentDictionary<Type, XmlSerializer> _serializers = new ConcurrentDictionary<Type, XmlSerializer>();
+        private static CacheItemPolicy expirationPolicy = new CacheItemPolicy()
+        {
+            SlidingExpiration = TimeSpan.FromHours(6.0)
+        };
 
         public static T Deserialize<T>(this string xml) where T : class
         {
@@ -56,7 +58,12 @@ namespace Utility.Extensions
 
         private static XmlSerializer GetSerializer(Type type)
         {
-            return _serializers.GetOrAdd(type, key => new XmlSerializer(key));
+            var key = type.FullName;
+            var serializer = new Lazy<XmlSerializer>(() => new XmlSerializer(type));
+
+            serializer =  MemoryCache.Default.AddOrGetExisting(key, serializer, expirationPolicy) as Lazy<XmlSerializer>;
+
+            return serializer.Value;
         }
     }
 }
