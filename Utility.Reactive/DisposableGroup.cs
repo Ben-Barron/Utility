@@ -19,6 +19,7 @@ namespace Utility.Reactive
 
         // Don't need full pattern as its a sealed class and can safely call dispose on a 
         // CompositeDisposable from any thread mulitple times and it will only dispose once.
+        // There is a unit test to cover this behaviour to protect against changes to RX.
         public void Dispose()
         {
             _disposables.Dispose();
