@@ -8,7 +8,7 @@ namespace Utility.Extensions
         public static TAttribute GetAttribute<TAttribute>(this Type type)
             where TAttribute : Attribute
         {
-            return type.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault() as TAttribute;
+            return type.GetCustomAttributes(typeof(TAttribute), true).OfType<TAttribute>().FirstOrDefault();
         }
     }
 }
