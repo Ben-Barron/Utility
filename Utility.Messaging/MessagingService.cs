@@ -4,29 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Reactive.Subjects;
 using Utility.Extensions;
 using Utility.Logging;
 using Utility.Reactive;
 using Utility.Reactive.Extensions;
+using Utility.Reactive.Subjects;
 
 namespace Utility.Messaging
 {
     public class MessagingService : DisposablesHandler, IMessagingService
     {
         private readonly ConcurrentDictionary<Type, IMessagingClient> _clients;
-        private readonly Subject<IObservable<IMessage>> _clientMessageStreams;
-        private readonly IObservable<IMessage> _allClientMessages;
+        private readonly IMergedStreamSubjectFactory<IMessage> _mergedStreamSubjectFactory;
         private readonly ILogger _logger;
 
         public MessagingService(ILogFactory logFactory)
         {
             _clients = new ConcurrentDictionary<Type, IMessagingClient>();
-            _clientMessageStreams = new Subject<IObservable<IMessage>>();
-            _allClientMessages = _clientMessageStreams.Merge();
+            _mergedStreamSubjectFactory = new MergedStreamSubjectFactory<IMessage>();
             _logger = logFactory.GetLogger<MessagingService>();
-
-            _clientMessageStreams.DisposeWith(this);
         }
 
         public IMessagingClient Register<T>()
@@ -49,11 +45,9 @@ namespace Utility.Messaging
                 {
                     _logger.Debug("Message client does not exist for '{0}', creating one.", key.FullName);
 
-                    var incomingMessages = _allClientMessages.Where(m => m.Addresses.Any(addresses.Contains));
-                    var outgoingMessages = new Subject<IMessage>();
+                    var incomingMessages = _mergedStreamSubjectFactory.MergedStream.Where(m => m.Addresses.Any(addresses.Contains));
+                    var outgoingMessages = _mergedStreamSubjectFactory.GetNewSubject();
                     var client = new MessagingClient(incomingMessages, outgoingMessages);
-
-                    _clientMessageStreams.OnNext(outgoingMessages);
 
                     Disposable.Create(
                         () =>
