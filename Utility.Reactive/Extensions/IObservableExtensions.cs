@@ -29,11 +29,6 @@ namespace Utility.Reactive.Extensions
             return observable.Multicast(new BehaviorSubject<T>(defaultValue));
         }
 
-        public static T Value<T>(this IObservable<T> observable)
-        {
-            return observable.FirstAsync().Wait();
-        }
-
         public static IObservable<bool> WhenTrue(this IObservable<bool> observable)
         {
             return observable.Where(value => value);
