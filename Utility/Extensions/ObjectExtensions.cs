@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.Caching;
 using System.Xml.Serialization;
 
 namespace Utility.Extensions
 {
-    public static class SerializerExtensions
+    public static class ObjectExtensions
     {
+        #region "Serialization"
+
         private static CacheItemPolicy expirationPolicy = new CacheItemPolicy()
         {
             SlidingExpiration = TimeSpan.FromHours(6.0)
@@ -64,6 +68,37 @@ namespace Utility.Extensions
             serializer =  MemoryCache.Default.AddOrGetExisting(key, serializer, expirationPolicy) as Lazy<XmlSerializer>;
 
             return serializer.Value;
+        }
+
+        #endregion
+
+        public static string GetPropertiesString(this object obj, bool singleLineFormatting = false)
+        {
+            var values = obj.GetType().GetProperties()
+                .Where(p => p.CanRead)
+                .Select(
+                    p =>
+                    {
+                        try
+                        {
+                            return string.Format("{0} = '{1}'", p.Name, p.GetMethod.Invoke(obj, null));
+                        }
+                        catch
+                        {
+                            return string.Format("{0} = [Unable to get value!]", p.Name);
+                        }
+                    });
+
+            return (singleLineFormatting)
+                ? string.Format("[ {0} ]", string.Join(",", values))
+                : string.Format(
+                    "[" + Environment.NewLine + "\t{0}" + Environment.NewLine + "]",
+                    string.Join(Environment.NewLine + "\t", values));
+        }
+
+        public static void PrintPropertiesString(this object obj, bool singleLine = false)
+        {
+            Debug.Print(GetPropertiesString(obj, singleLine));
         }
     }
 }
