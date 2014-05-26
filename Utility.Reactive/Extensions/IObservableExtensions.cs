@@ -6,12 +6,7 @@ namespace Utility.Reactive.Extensions
 {
     public static class IObservableExtensions
     {
-        public static IObservable<T> AsBehavior<T>(this IObservable<T> observable, IDisposablesHandler disposablesHandler)
-        {
-            return AsBehavior(observable, disposablesHandler, default(T));
-        }
-
-        public static IObservable<T> AsBehavior<T>(this IObservable<T> observable, IDisposablesHandler disposablesHandler, T defaultValue)
+        public static IObservable<T> AsBehavior<T>(this IObservable<T> observable, IDisposablesHandler disposablesHandler, T defaultValue = default(T))
         {
             var connectable = AsBehavior(observable, defaultValue);
             connectable.Connect().DisposeWith(disposablesHandler);
@@ -19,12 +14,7 @@ namespace Utility.Reactive.Extensions
             return connectable;
         }
 
-        public static IConnectableObservable<T> AsBehavior<T>(this IObservable<T> observable)
-        {
-            return AsBehavior(observable, default(T));
-        }
-
-        public static IConnectableObservable<T> AsBehavior<T>(this IObservable<T> observable, T defaultValue)
+        public static IConnectableObservable<T> AsBehavior<T>(this IObservable<T> observable, T defaultValue = default(T))
         {
             return observable.Multicast(new BehaviorSubject<T>(defaultValue));
         }
