@@ -38,7 +38,7 @@ namespace Utility.Logging.Log4Net
         public void Debug(Exception exception, string format, params object[] args)
         {
 #if DEBUG
-            _logger.Debug(String.Format(format, args), exception);
+            _logger.Debug(string.Format(format, args), exception);
 #endif
         }
 
@@ -59,7 +59,7 @@ namespace Utility.Logging.Log4Net
 
         public void Info(Exception exception, string format, params object[] args)
         {
-            _logger.Info(String.Format(format, args), exception);
+            _logger.Info(string.Format(format, args), exception);
         }
 
         public void Warn(string message)
@@ -79,7 +79,7 @@ namespace Utility.Logging.Log4Net
 
         public void Warn(Exception exception, string format, params object[] args)
         {
-            _logger.Warn(String.Format(format, args), exception);
+            _logger.Warn(string.Format(format, args), exception);
         }
 
         public void Error(string message)
@@ -99,7 +99,7 @@ namespace Utility.Logging.Log4Net
 
         public void Error(Exception exception, string format, params object[] args)
         {
-            _logger.Error(String.Format(format, args), exception);
+            _logger.Error(string.Format(format, args), exception);
         }
 
         public void Fatal(string message)
@@ -119,7 +119,7 @@ namespace Utility.Logging.Log4Net
 
         public void Fatal(Exception exception, string format, params object[] args)
         {
-            _logger.Fatal(String.Format(format, args), exception);
+            _logger.Fatal(string.Format(format, args), exception);
         }
 
         #endregion
