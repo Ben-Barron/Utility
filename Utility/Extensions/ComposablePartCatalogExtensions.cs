@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Diagnostics;
@@ -61,18 +62,20 @@ namespace Utility.Extensions
 
         public static void PrintExports(this ComposablePartCatalog catalog, string exportPrefix = "")
         {
-            catalog.Do(
-                c =>
-                    c.ExportDefinitions.Where(ed => ed.ContractName.StartsWith(exportPrefix))
-                        .Do(fe => Debug.Print("EXPORT: " + fe.ContractName)));
+            Debug.Print(string.Join(Environment.NewLine,
+                catalog.SelectMany(
+                    c =>
+                        c.ExportDefinitions.Where(ed => ed.ContractName.StartsWith(exportPrefix))
+                            .Select(fe => "EXPORT: " + fe.ContractName))));
         }
 
         public static void PrintImports(this ComposablePartCatalog catalog, string importPrefix = "")
         {
-            catalog.Do(
-                c =>
-                    c.ImportDefinitions.Where(ed => ed.ContractName.StartsWith(importPrefix))
-                        .Do(fe => Debug.Print("IMPORT: " + fe.ContractName)));
+            Debug.Print(string.Join(Environment.NewLine,
+                catalog.SelectMany(
+                    c =>
+                        c.ImportDefinitions.Where(ed => ed.ContractName.StartsWith(importPrefix))
+                            .Select(fe => "IMPORT: " + fe.ContractName))));
         }
     }
 }
