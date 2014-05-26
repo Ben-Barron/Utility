@@ -6,8 +6,8 @@ namespace Utility.Messaging
     public class MessageClientAddress : Attribute
     {
         public MessageClientAddress(string address)
+            : this(new[] { address })
         {
-            Addresses = new[] { address };
         }
 
         public MessageClientAddress(string[] addresses)
