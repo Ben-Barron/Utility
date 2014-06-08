@@ -4,11 +4,11 @@ namespace Utility.Messaging
     public interface IMessage
     {
         string[] Addresses { get; }
-        object Content { get; }
+        object Payload { get; }
     }
 
     public interface IMessage<T> : IMessage
     {
-        new T Content { get; }
+        new T Payload { get; }
     }
 }
