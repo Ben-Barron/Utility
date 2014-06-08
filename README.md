@@ -62,10 +62,12 @@ Project: Utility.Reactive
 
 Extensions, helper & utility classes that use Reactive Extensions.
 
-**Dependencies:** Reactive Extensions.
+**Dependencies:** Reactive Extensions; Utility.
 
 Licence
 -------
+
+MIT Licence
 
 Copyright (c) 2014 Benjamin Barron
 
