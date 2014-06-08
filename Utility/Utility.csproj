@@ -74,6 +74,7 @@
     <Compile Include="Logging\ILogFactory.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reactive\Collections\SlidingWindowExpiringDictionary.cs" />
     <Compile Include="Reactive\Configuration\Configuration.cs" />
     <Compile Include="Reactive\Configuration\FileSystemConfigurationProvider.cs" />
     <Compile Include="Reactive\Configuration\IConfiguration.cs" />
