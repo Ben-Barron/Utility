@@ -16,30 +16,22 @@ namespace Utility.Logging.Log4Net
 
         public void Debug(string message)
         {
-#if DEBUG
             _logger.Debug(message);
-#endif
         }
 
         public void Debug(string format, params object[] args)
         {
-#if DEBUG
             _logger.DebugFormat(format, args);
-#endif
         }
 
         public void Debug(Exception exception, string message)
         {
-#if DEBUG
             _logger.Debug(message, exception);
-#endif
         }
 
         public void Debug(Exception exception, string format, params object[] args)
         {
-#if DEBUG
             _logger.Debug(string.Format(format, args), exception);
-#endif
         }
 
         public void Info(string message)
