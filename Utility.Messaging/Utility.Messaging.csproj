@@ -66,10 +66,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utility.Reactive\Utility.Reactive.csproj">
-      <Project>{792e2aec-2235-4498-80f4-02f7177635d5}</Project>
-      <Name>Utility.Reactive</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{e3e6ae3a-dc23-47c1-a620-dc8e54f9d50f}</Project>
       <Name>Utility</Name>

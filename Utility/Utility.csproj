@@ -34,6 +34,22 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Core, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Core.2.2.4\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Interfaces.2.2.4\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Linq.2.2.4\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-PlatformServices.2.2.4\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,8 +71,27 @@
     <Compile Include="Logging\ILogFactory.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reactive\Configuration\Configuration.cs" />
+    <Compile Include="Reactive\Configuration\FileSystemConfigurationProvider.cs" />
+    <Compile Include="Reactive\Configuration\IConfiguration.cs" />
+    <Compile Include="Reactive\DisposableGroup.cs" />
+    <Compile Include="Reactive\DisposablesHandler.cs" />
+    <Compile Include="Reactive\Extensions\IDisposableExtensions.cs" />
+    <Compile Include="Reactive\Extensions\IObservableExtensions.cs" />
+    <Compile Include="Reactive\IDisposableGroup.cs" />
+    <Compile Include="Reactive\IDisposablesHandler.cs" />
+    <Compile Include="Reactive\IO\IObservableFileSystemWatcher.cs" />
+    <Compile Include="Reactive\IO\ObservableFileSystemWatcher.cs" />
+    <Compile Include="Reactive\Schedulers\ISchedulerService.cs" />
+    <Compile Include="Reactive\Schedulers\SchedulerService.cs" />
+    <Compile Include="Reactive\Subjects\IMergedStreamSubjectFactory.cs" />
+    <Compile Include="Reactive\Subjects\MergedStreamSubjectFactory.cs" />
     <Compile Include="Serialization\ISerializationService.cs" />
     <Compile Include="Serialization\XmlSerializationService.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
